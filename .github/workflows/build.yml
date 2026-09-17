@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run the build
-      run: echo "Build After the Test Done"
+        run: echo "Build After the Test Done"
