@@ -1,0 +1,28 @@
+name: CICD
+
+on:
+  push:
+
+jobs:
+  # 1. Run the code workflow
+  code:
+    uses: ./.github/workflows/code.yml
+
+  # 2. Run the test workflow only AFTER code finishes successfully
+  test:
+    needs: code
+    uses: ./.github/workflows/test.yml
+
+  # 3. Run the build workflow only AFTER test finishes successfully
+  build:
+    needs: test
+    uses: ./.github/workflows/build.yml
+
+  # 4. Run the deploy workflow only AFTER build finishes successfully
+  deploy:
+    needs: build
+    uses: ./.github/workflows/deploy.yml
+
+        
+      
+
